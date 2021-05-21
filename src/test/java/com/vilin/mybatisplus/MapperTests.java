@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +21,11 @@ public class MapperTests {
     @Test
     public void testInsert() {
         User user = new User();
-        user.setName("建国");
-        user.setAge(74);
-        user.setEmail("jiangguo@qq.com");
+        user.setName("后羿");
+        user.setAge(28);
+        user.setEmail("zhinv@qq.com");
+//        user.setCreateTime(LocalDateTime.now());
+//        user.setUpdateTime(LocalDateTime.now());
 
         int result = userMapper.insert(user);
         System.out.println("结构：" + result);
@@ -47,16 +50,24 @@ public class MapperTests {
     @Test
     public void testUpdate() {
         User user = new User();
-        user.setId(1L);
-        user.setAge(74);
+        user.setId(1395283724207214606L);
+        user.setAge(36);
+//        user.setUpdateTime(LocalDateTime.now());
         int result = userMapper.updateById(user);
         System.out.println("结果：" + result);
     }
 
     @Test
     public void testDelete(){
-        int result = userMapper.deleteById(1L);
+        int result = userMapper.deleteById(2L);
         System.out.println("结果:" + result);
     }
+
+    @Test
+    public void testSelectAllByName(){
+        List<User> users = userMapper.selectAllByName("Jack");
+        users.forEach(System.out::println);
+    }
+
 
 }
