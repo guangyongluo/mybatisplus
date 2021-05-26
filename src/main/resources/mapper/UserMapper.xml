@@ -4,12 +4,23 @@
 <mapper namespace="com.vilin.mybatisplus.mapper.UserMapper">
 
     <sql id="Base_Column_List">
-        id, name, age, email
+        uid as id,
+        username as name,
+        age,
+        email,
+        create_time as createTime,
+        update_time as updateTime,
+        is_deleted as deleted
     </sql>
 
     <select id="selectAllByName" resultType="com.vilin.mybatisplus.entity.User">
         select <include refid="Base_Column_List"></include>
         from t_user
         where name = #{name}
+    </select>
+    <select id="selectPageByAge" resultType="com.vilin.mybatisplus.entity.User">
+        select <include refid="Base_Column_List"></include>
+        from t_user
+        where age > #{age}
     </select>
 </mapper>

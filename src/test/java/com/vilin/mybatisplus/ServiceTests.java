@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-public class ServiceTest {
+public class ServiceTests {
 
     @Resource
     private UserService userService;
