@@ -1,26 +1,45 @@
 package com.vilin.mybatisplus.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.vilin.mybatisplus.enums.SexEnum;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@TableName(value = "t_user")
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+//@TableName("t_user")
 public class User {
-//    @TableId(value = "uid", type = IdType.AUTO)
-    @TableId(value = "uid")
+
+    @TableId(value = "uid", type = IdType.AUTO)
     private Long id;
-    @TableField(value = "username")
+
+    @TableField("user_name")
     private String name;
+
     private Integer age;
+
     private String email;
 
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private SexEnum sex;
 
     @TableLogic
-    @TableField(value = "is_deleted")
-    private Boolean deleted; // 0 false 未删除； 1 true 已删除
+    private Boolean isDeleted;
+
+    public User(Long id, String name, Integer age, String email){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
 }

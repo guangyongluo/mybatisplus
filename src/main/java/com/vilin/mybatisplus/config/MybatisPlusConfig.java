@@ -11,14 +11,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan("com.vilin.mybatisplus.mapper")
 public class MybatisPlusConfig {
-    // 最新版
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        //分页插件
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        //乐观锁插件
-        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
-        return interceptor;
-    }
+
+  @Bean
+  public MybatisPlusInterceptor mybatisPlusInterceptor(){
+    MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+    // paging plugin
+    mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+    // optimistic plugin
+    mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+    return mybatisPlusInterceptor;
+  }
+
 }

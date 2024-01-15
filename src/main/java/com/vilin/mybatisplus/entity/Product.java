@@ -1,13 +1,16 @@
 package com.vilin.mybatisplus.entity;
 
 import com.baomidou.mybatisplus.annotation.Version;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class Product {
-    private Long id;
-    private String name;
-    private Integer price;
-    @Version
-    private Integer version;
+  private Long id;
+  private String name;
+  private Integer price;
+  @Version
+  private Integer version;
+
 }

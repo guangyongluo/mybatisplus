@@ -1,26 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vilin.mybatisplus.mapper.UserMapper">
 
-    <sql id="Base_Column_List">
-        uid as id,
-        username as name,
-        age,
-        email,
-        create_time as createTime,
-        update_time as updateTime,
-        is_deleted as deleted
-    </sql>
+  <select id="selectMapById" resultType="map">
+    SELECT uid, user_name, age, email FROM T_USER WHERE uid = #{id}
+  </select>
 
-    <select id="selectAllByName" resultType="com.vilin.mybatisplus.entity.User">
-        select <include refid="Base_Column_List"></include>
-        from t_user
-        where name = #{name}
-    </select>
-    <select id="selectPageByAge" resultType="com.vilin.mybatisplus.entity.User">
-        select <include refid="Base_Column_List"></include>
-        from t_user
-        where age > #{age}
-    </select>
+  <select id="selectUserByAge" resultType="User">
+    SELECT uid, user_name, age, email FROM T_USER WHERE age > #{age}
+  </select>
+
 </mapper>
